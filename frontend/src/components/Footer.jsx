@@ -7,7 +7,7 @@ import { BsTwitterX } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <footer className="w-full px-[1.4em] sm:px-[1.8em] lg:px-[2.7em] xl:px-[3.8em] py-[3.5em] pb-[2.5em] flex flex-col gap-[2.5em] text-[clamp(10px,3.8vw,16px)] sm:text-[clamp(17px,2.5vw,17px)] md:text-[clamp(18px,2vw,18px)] lg:text-[clamp(16px,1.8vw,19px)] xl:text-[clamp(16px,1.3vw,20px)]">
+    <footer className="w-full px-[1.4em] sm:px-[1.8em] lg:px-[2.7em] xl:px-[3.8em] py-[3.5em] pb-[2.5em] flex flex-col gap-[2.5em] text-[clamp(10px,3.8vw,16px)] sm:text-[clamp(17px,2.5vw,17px)] md:text-[clamp(18px,2vw,18px)] lg:text-[clamp(16px,1.8vw,19px)] xl:text-[clamp(16px,1.3vw,20px)] transform-gpu">
       <div className="flex flex-col lg:flex-row lg:justify-between gap-[2.5em]">
         <div className="lg:w-[50%] flex flex-col gap-[.7em]">
           <h1 className="text-[1.5em] font-bold tracking-wide flex items-center gap-[.3em]">
@@ -123,8 +123,8 @@ const Footer = () => {
 
       <div className="w-full h-[.1em] bg-gray-100"></div>
 
-      <div className="relative w-full h-[13vw] overflow-hidden flex justify-center items-center">
-        <h1 className="text-[14vw] font-[monument] font-bold text-center text-[#E5E5E5]">
+      <div className="relative w-full h-[13vw] overflow-hidden flex justify-center items-center transform-gpu">
+        <h1 className="text-[14vw] font-[monument] font-bold text-center text-[#E5E5E5] will-change-transform transform-gpu">
           Vensa.co
         </h1>
       </div>

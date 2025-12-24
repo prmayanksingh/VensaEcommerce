@@ -46,7 +46,6 @@ async function loginController(req, res) {
 async function updateUserController(req, res) {
   const { id } = req.params;
   const { username, name, email, password, cart } = req.body;
-  console.log(id);
 
   const updatedUser = await userModel.findByIdAndUpdate(
     id,

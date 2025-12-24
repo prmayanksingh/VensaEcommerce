@@ -30,12 +30,12 @@ const faq2 = [
   {
     num: "05",
     q: "How can I cancel my order?",
-    a: "Contact us immediately. We can cancel if it hasn’t shipped yet (usually within 1 hour). If shipped, you can return after delivery.",
+    a: "Contact us immediately. We can cancel if it hasn't shipped yet (usually within 1 hour). If shipped, you can return after delivery.",
   },
   {
     num: "06",
     q: "Are the products on sale final sale?",
-    a: "Items marked “Final Sale” cannot be returned or exchanged. Other discounted items follow our standard return window unless noted.",
+    a: "Items marked \"Final Sale\" cannot be returned or exchanged. Other discounted items follow our standard return window unless noted.",
   },
   {
     num: "07",
@@ -50,14 +50,14 @@ const faq2 = [
 ];
 
 const FAQSection = () => {
-  const [openFaq, setOpenFaq] = useState("00");
+  const [openFaq, setOpenFaq] = useState(null);
 
   const toggle = (num) => {
     setOpenFaq(openFaq === num ? null : num);
   };
 
   return (
-    <section className="px-[1.6em] sm:px-[3em] md:px-[3.6em] lg:px-[2.6em] xl:px-[clamp(60px,5vw,100px)] py-[4em] xl:py-[6em] flex flex-col gap-[3em] text-[clamp(10px,3.7vw,15px)] sm:text-[clamp(14px,2.5vw,16px)] md:text-[clamp(15px,2vw,17px)] lg:text-[clamp(10px,1.5vw,17px)] xl:text-[clamp(14px,1.2vw,19px)]">
+    <section className="px-[1.6em] sm:px-[3em] md:px-[3.6em] lg:px-[2.6em] xl:px-[clamp(60px,5vw,100px)] py-[4em] xl:py-[6em] flex flex-col gap-[3em] text-[clamp(10px,3.7vw,15px)] sm:text-[clamp(14px,2.5vw,16px)] md:text-[clamp(15px,2vw,17px)] lg:text-[clamp(10px,1.5vw,17px)] xl:text-[clamp(14px,1.2vw,19px)] transform-gpu">
       <div className="flex flex-col gap-[.4em]">
         <h1 className="text-[1.7em] lg:text-[2em] font-bold tracking-wide">
           Frequently Asked Questions
@@ -76,13 +76,13 @@ const FAQSection = () => {
           </motion.button>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row lg:justify-between gap-[1.2em] lg:gap-[0em]">
-        <div className="lg:w-[49%] flex flex-col gap-[1.2em] font-bold font-['Gilroy'] text-[#1F1F1F]">
+      <div className="flex flex-col lg:flex-row lg:justify-between gap-[1.2em] lg:gap-[0em] transform-gpu">
+        <div className="lg:w-[49%] flex flex-col gap-[1.2em] font-bold font-['Gilroy'] text-[#1F1F1F] transform-gpu">
           {faq1.map((elem, idx) => (
             <div
               key={idx}
               onClick={() => toggle(elem.num)}
-              className="h-fit px-[1em] bg-[#F7F7F7] rounded-lg flex flex-col"
+              className="h-fit px-[1em] bg-[#F7F7F7] rounded-lg flex flex-col cursor-pointer transform-gpu"
             >
               <div className="w-full h-[3.5em] flex items-center justify-between rounded-lg">
                 <div className="flex items-center gap-[.8em]">
@@ -99,49 +99,47 @@ const FAQSection = () => {
               </div>
 
               <AnimatePresence initial={false}>
-                {openFaq === elem.num ? (
+                {openFaq === elem.num && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{
                       height: "auto",
                       opacity: 1,
-                      transition: { duration: 0.5, ease: "easeOut" },
+                      transition: { 
+                        height: { duration: 0.3, ease: [0.4, 0, 0.2, 1], type: "tween" },
+                        opacity: { duration: 0.2, ease: "easeOut" }
+                      },
                     }}
                     exit={{
                       height: 0,
                       opacity: 0,
-                      transition: { duration: 0.3, ease: "easeIn" },
+                      transition: { 
+                        height: { duration: 0.25, ease: [0.4, 0, 0.2, 1], type: "tween" },
+                        opacity: { duration: 0.15, ease: "easeIn" }
+                      },
                     }}
-                    className="overflow-hidden"
+                    className="overflow-hidden will-change-[height,opacity]"
                   >
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                      exit={{ opacity: 0, transition: { duration: 0.3 } }}
-                      className="flex items-center gap-[.8em] pb-[1em]"
-                    >
+                    <div className="flex items-center gap-[.8em] pb-[1em]">
                       <h2 className="opacity-0 text-[.95em] tracking-wider text-[#ABABAB]">
                         {elem.num}
                       </h2>
                       <h2 className="w-[90%] text-[.95em] text-gray-600">
                         {elem.a}
                       </h2>
-                    </motion.div>
+                    </div>
                   </motion.div>
-                ) : (
-                  ""
                 )}
               </AnimatePresence>
             </div>
           ))}
         </div>
-        <div className="lg:w-[49%] flex flex-col gap-[1.2em] font-bold font-['Gilroy']">
+        <div className="lg:w-[49%] flex flex-col gap-[1.2em] font-bold font-['Gilroy'] transform-gpu">
           {faq2.map((elem, idx) => (
             <div
               key={idx}
               onClick={() => toggle(elem.num)}
-              className="h-fit px-[1em] bg-[#F7F7F7] rounded-lg flex flex-col"
+              className="h-fit px-[1em] bg-[#F7F7F7] rounded-lg flex flex-col cursor-pointer transform-gpu"
             >
               <div className="w-full h-[3.5em] flex items-center justify-between rounded-lg">
                 <div className="flex items-center gap-[.8em]">
@@ -158,38 +156,36 @@ const FAQSection = () => {
               </div>
 
               <AnimatePresence initial={false}>
-                {openFaq === elem.num ? (
+                {openFaq === elem.num && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{
                       height: "auto",
                       opacity: 1,
-                      transition: { duration: 0.5, ease: "easeOut" },
+                      transition: { 
+                        height: { duration: 0.3, ease: [0.4, 0, 0.2, 1], type: "tween" },
+                        opacity: { duration: 0.2, ease: "easeOut" }
+                      },
                     }}
                     exit={{
                       height: 0,
                       opacity: 0,
-                      transition: { duration: 0.3, ease: "easeIn" },
+                      transition: { 
+                        height: { duration: 0.25, ease: [0.4, 0, 0.2, 1], type: "tween" },
+                        opacity: { duration: 0.15, ease: "easeIn" }
+                      },
                     }}
-                    className="overflow-hidden"
+                    className="overflow-hidden will-change-[height,opacity]"
                   >
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                      exit={{ opacity: 0, transition: { duration: 0.3 } }}
-                      className="flex items-center gap-[.8em] pb-[1em]"
-                    >
+                    <div className="flex items-center gap-[.8em] pb-[1em]">
                       <h2 className="opacity-0 text-[.95em] tracking-wider text-[#ABABAB]">
                         {elem.num}
                       </h2>
                       <h2 className="w-[90%] text-[.95em] text-gray-600">
                         {elem.a}
                       </h2>
-                    </motion.div>
+                    </div>
                   </motion.div>
-                ) : (
-                  ""
                 )}
               </AnimatePresence>
             </div>
