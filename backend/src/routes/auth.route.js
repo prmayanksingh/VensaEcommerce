@@ -13,5 +13,8 @@ router.patch('/updateuser/:id', authController.updateUserController)
 
 router.delete('/deleteuser/:id', authController.deleteUserController)
 
+router.post("/logout", authController.logoutController);
+
+router.get("/currentuser", authController.currentUserController);
 
 module.exports = router;
